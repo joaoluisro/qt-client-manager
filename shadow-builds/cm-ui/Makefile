@@ -839,8 +839,11 @@ main.o: ../../cm/cm-ui/source/main.cpp /opt/Qt/5.15.2/gcc_64/include/QtGui/QGuiA
 		/opt/Qt/5.15.2/gcc_64/include/QtQml/qqmlcontext.h \
 		../../cm/cm-lib/source/controllers/master-controller.h \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/QObject \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/QScopedPointer \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/QString \
-		../../cm/cm-lib/source/cm-lib_global.h
+		../../cm/cm-lib/source/cm-lib_global.h \
+		../../cm/cm-lib/source/controllers/navigation-controller.h \
+		../../cm/cm-lib/source/models/client.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../cm/cm-ui/source/main.cpp
 
 views_DashboardView_qml.o: views_DashboardView_qml.cpp 

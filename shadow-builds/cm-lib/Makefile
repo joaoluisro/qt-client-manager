@@ -54,11 +54,13 @@ OBJECTS_DIR   = ../../cm/cm-lib/build/linux/gcc/x64/release/.obj/
 
 SOURCES       = ../../cm/cm-lib/source/controllers/master-controller.cpp \
 		../../cm/cm-lib/source/models/client.cpp \
-		../../cm/cm-lib/cm_lib.cpp ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp
+		../../cm/cm-lib/cm_lib.cpp ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp \
+		../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_navigation-controller.cpp
 OBJECTS       = ../../cm/cm-lib/build/linux/gcc/x64/release/.obj/master-controller.o \
 		../../cm/cm-lib/build/linux/gcc/x64/release/.obj/client.o \
 		../../cm/cm-lib/build/linux/gcc/x64/release/.obj/cm_lib.o \
-		../../cm/cm-lib/build/linux/gcc/x64/release/.obj/moc_master-controller.o
+		../../cm/cm-lib/build/linux/gcc/x64/release/.obj/moc_master-controller.o \
+		../../cm/cm-lib/build/linux/gcc/x64/release/.obj/moc_navigation-controller.o
 DIST          = /opt/Qt/5.15.2/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.15.2/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt/5.15.2/gcc_64/mkspecs/common/linux.conf \
@@ -238,7 +240,9 @@ DIST          = /opt/Qt/5.15.2/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.15.2/gcc_64/mkspecs/features/exceptions.prf \
 		/opt/Qt/5.15.2/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt/5.15.2/gcc_64/mkspecs/features/lex.prf \
-		../../cm/cm-lib/cm-lib.pro ../../cm/cm-lib/source/controllers/master-controller.h \
+		../../cm/cm-lib/cm-lib.pro navigation-controller.h \
+		../../cm/cm-lib/source/controllers/master-controller.h \
+		../../cm/cm-lib/source/controllers/navigation-controller.h \
 		../../cm/cm-lib/source/models/client.h \
 		../../cm/cm-lib/source/cm-lib_global.h \
 		../../cm/cm-lib/cm_lib.h ../../cm/cm-lib/source/controllers/master-controller.cpp \
@@ -657,7 +661,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt/5.15.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../cm/cm-lib/source/controllers/master-controller.h ../../cm/cm-lib/source/models/client.h ../../cm/cm-lib/source/cm-lib_global.h ../../cm/cm-lib/cm_lib.h $(DISTDIR)/
+	$(COPY_FILE) --parents navigation-controller.h ../../cm/cm-lib/source/controllers/master-controller.h ../../cm/cm-lib/source/controllers/navigation-controller.h ../../cm/cm-lib/source/models/client.h ../../cm/cm-lib/source/cm-lib_global.h ../../cm/cm-lib/cm_lib.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../../cm/cm-lib/source/controllers/master-controller.cpp ../../cm/cm-lib/source/models/client.cpp ../../cm/cm-lib/cm_lib.cpp $(DISTDIR)/
 
 
@@ -690,9 +694,9 @@ compiler_moc_predefs_clean:
 ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_predefs.h: /opt/Qt/5.15.2/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++1y -Wall -Wextra -dM -E -o ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_predefs.h /opt/Qt/5.15.2/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp
+compiler_moc_header_make_all: ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_navigation-controller.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp
+	-$(DEL_FILE) ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_navigation-controller.cpp
 ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp: ../../cm/cm-lib/source/controllers/master-controller.h \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/QObject \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/qobject.h \
@@ -747,11 +751,74 @@ compiler_moc_header_clean:
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/qvarlengtharray.h \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/qcontainerfwd.h \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/QScopedPointer \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/QString \
 		../../cm/cm-lib/source/cm-lib_global.h \
+		../../cm/cm-lib/source/controllers/navigation-controller.h \
+		../../cm/cm-lib/source/models/client.h \
 		../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_predefs.h \
 		/opt/Qt/5.15.2/gcc_64/bin/moc
 	/opt/Qt/5.15.2/gcc_64/bin/moc $(DEFINES) --include /home/joao.ribeiro@intranet.agres/qt-projects/cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_predefs.h -I/opt/Qt/5.15.2/gcc_64/mkspecs/linux-g++ -I/home/joao.ribeiro@intranet.agres/qt-projects/cm/cm-lib -I/home/joao.ribeiro@intranet.agres/qt-projects/cm/cm-lib/source -I/opt/Qt/5.15.2/gcc_64/include -I/opt/Qt/5.15.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../cm/cm-lib/source/controllers/master-controller.h -o ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp
+
+../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_navigation-controller.cpp: ../../cm/cm-lib/source/controllers/navigation-controller.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/QObject \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qobject.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qlist.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qstringlist.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qregexp.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qmetatype.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../cm/cm-lib/source/cm-lib_global.h \
+		../../cm/cm-lib/source/models/client.h \
+		../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_predefs.h \
+		/opt/Qt/5.15.2/gcc_64/bin/moc
+	/opt/Qt/5.15.2/gcc_64/bin/moc $(DEFINES) --include /home/joao.ribeiro@intranet.agres/qt-projects/cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_predefs.h -I/opt/Qt/5.15.2/gcc_64/mkspecs/linux-g++ -I/home/joao.ribeiro@intranet.agres/qt-projects/cm/cm-lib -I/home/joao.ribeiro@intranet.agres/qt-projects/cm/cm-lib/source -I/opt/Qt/5.15.2/gcc_64/include -I/opt/Qt/5.15.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../cm/cm-lib/source/controllers/navigation-controller.h -o ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_navigation-controller.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -821,11 +888,36 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/qvarlengtharray.h \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/qcontainerfwd.h \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/QScopedPointer \
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/QString \
-		../../cm/cm-lib/source/cm-lib_global.h
+		../../cm/cm-lib/source/cm-lib_global.h \
+		../../cm/cm-lib/source/controllers/navigation-controller.h \
+		../../cm/cm-lib/source/models/client.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../../cm/cm-lib/build/linux/gcc/x64/release/.obj/master-controller.o ../../cm/cm-lib/source/controllers/master-controller.cpp
 
-../../cm/cm-lib/build/linux/gcc/x64/release/.obj/client.o: ../../cm/cm-lib/source/models/client.cpp ../../cm/cm-lib/source/models/client.h
+../../cm/cm-lib/build/linux/gcc/x64/release/.obj/client.o: ../../cm/cm-lib/source/models/client.cpp ../../cm/cm-lib/source/models/client.h \
+		../../cm/cm-lib/source/cm-lib_global.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../../cm/cm-lib/build/linux/gcc/x64/release/.obj/client.o ../../cm/cm-lib/source/models/client.cpp
 
 ../../cm/cm-lib/build/linux/gcc/x64/release/.obj/cm_lib.o: ../../cm/cm-lib/cm_lib.cpp ../../cm/cm-lib/cm_lib.h \
@@ -855,6 +947,9 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 ../../cm/cm-lib/build/linux/gcc/x64/release/.obj/moc_master-controller.o: ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../../cm/cm-lib/build/linux/gcc/x64/release/.obj/moc_master-controller.o ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_master-controller.cpp
+
+../../cm/cm-lib/build/linux/gcc/x64/release/.obj/moc_navigation-controller.o: ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_navigation-controller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../../cm/cm-lib/build/linux/gcc/x64/release/.obj/moc_navigation-controller.o ../../cm/cm-lib/build/linux/gcc/x64/release/.moc/moc_navigation-controller.cpp
 
 ####### Install
 

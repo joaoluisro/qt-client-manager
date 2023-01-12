@@ -1,11 +1,18 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
+#include "cm-lib_global.h"
 
-class Client
-{
-public:
-    Client();
-};
+namespace cm {
+namespace models {
+    class CMLIB_EXPORT Client
+    {
+    public:
+        Client();
+    };
+
+}
+}
+
 
 #endif // CLIENT_H

@@ -16,7 +16,9 @@ SOURCES += \
     cm_lib.cpp
 
 HEADERS += \
+    navigation-controller.h \
     source/controllers/master-controller.h \
+    source/controllers/navigation-controller.h \
     source/models/client.h \
     source/cm-lib_global.h \
     cm_lib.h
