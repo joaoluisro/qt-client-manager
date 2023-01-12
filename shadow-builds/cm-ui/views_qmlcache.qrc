@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/views">
+        <file alias="MasterView.qml">../../cm/cm-ui/views/MasterView.qml</file>
+        <file alias="SplashView.qml">../../cm/cm-ui/views/SplashView.qml</file>
+        <file alias="DashboardView.qml">../../cm/cm-ui/views/DashboardView.qml</file>
+        <file alias="CreateClientView.qml">../../cm/cm-ui/views/CreateClientView.qml</file>
+        <file alias="EditClientView.qml">../../cm/cm-ui/views/EditClientView.qml</file>
+        <file alias="FindClientView.qml">../../cm/cm-ui/views/FindClientView.qml</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,41 @@
+QT += qml quick
+
+# You can make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+TEMPLATE = app
+
+INCLUDEPATH += source \
+             ../cm-lib/source
+
+SOURCES += \
+        source/main.cpp
+
+RESOURCES += views.qrc
+
+include(../qmake-target-platform.pri)
+include(../qmake-destination-path.pri)
+
+
+#LIBS += -L$$PWD/../../build-cm-Desktop_Qt_5_15_2_GCC_64bit-Debug/cm-lib -lcm-lib
+
+LIBS += -L$$PWD/../binaries/$$DESTINATION_PATH -lcm-lib
+
+# Additional import path used to resolve QML modules in Qt Creator's code model
+QML_IMPORT_PATH = $$PWD
+
+# Additional import path used to resolve QML modules just for Qt Quick Designer
+QML_DESIGNER_IMPORT_PATH =
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+  CreateClientView.qml \
+  DashboardView.qml \
+  EditClientView.qml \
+  FindClientView.qml \
+  SplashView.qml
