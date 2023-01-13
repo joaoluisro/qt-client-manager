@@ -12,7 +12,10 @@ INCLUDEPATH += source \
 SOURCES += \
         source/main.cpp
 
-RESOURCES += views.qrc
+RESOURCES += views.qrc \
+  assets.qrc \
+  components.qrc
+
 
 include(../qmake-target-platform.pri)
 include(../qmake-destination-path.pri)
@@ -20,13 +23,13 @@ include(../qmake-destination-path.pri)
 
 #LIBS += -L$$PWD/../../build-cm-Desktop_Qt_5_15_2_GCC_64bit-Debug/cm-lib -lcm-lib
 
-LIBS += -L$$PWD/../binaries/$$DESTINATION_PATH -lcm-lib
+LIBS += -L$$PWD/../binaries/$$DESTINATION_PATH -l cm-lib
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH = $$PWD
+QML_IMPORT_PATH += $$PWD
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
-QML_DESIGNER_IMPORT_PATH =
+QML_DESIGNER_IMPORT_PATH += $$PWD
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -11,7 +11,7 @@ INCLUDEPATH += source
 include(../qmake-target-platform.pri)
 include(../qmake-destination-path.pri)
 
-LIBS += -L$$PWD/../binaries/$$DESTINATION_PATH -lcm-lib
+LIBS += -L$$PWD/../binaries/$$DESTINATION_PATH -l cm-lib
 
 TEMPLATE = app
 

@@ -11,9 +11,7 @@ class CMLIB_EXPORT NavigationController : public QObject
     Q_OBJECT
 
 public:
-    explicit NavigationController(QObject* _parent = nullptr)
-    : QObject(_parent)
-    {}
+    explicit NavigationController(QObject* _parent = nullptr): QObject(_parent){}
 
 signals:
     void goCreateClientView();
