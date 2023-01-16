@@ -11,14 +11,18 @@ CONFIG += c++14
 INCLUDEPATH += source
 
 SOURCES += \
+    source/controllers/commandcontroller.cpp \
     source/controllers/master-controller.cpp \
+    source/framework/command.cpp \
     source/models/client.cpp \
     cm_lib.cpp
 
 HEADERS += \
     navigation-controller.h \
+    source/controllers/commandcontroller.h \
     source/controllers/master-controller.h \
     source/controllers/navigation-controller.h \
+    source/framework/command.h \
     source/models/client.h \
     source/cm-lib_global.h \
     cm_lib.h

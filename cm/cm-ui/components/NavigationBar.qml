@@ -1,5 +1,5 @@
 import QtQuick 2.9
-import QtQuick.Window 2.15
+import QtQuick.Window 2.2
 import QtQuick.Controls 2.2
 
 import assets 1.0
@@ -15,44 +15,41 @@ Rectangle {
         left: parent.left
     }
     width: isCollapsed ? Style.widthNavigationBarCollapsed : Style.heightNavigationBarExpanded
-    height: parent.height
-    color: Style.colourNavigationBarBackground
-    Column {
-
-
-        Button {
+    Rectangle{
+        anchors.fill: parent
+        color: Style.colourNavigationBarBackground
+        Column {
+            width: parent.width
             NavigationButton{
-                iconCharacter:"\uf0c9"
-                description: "description"
+                iconCharacter: "\uf0c9"
+                description: ""
+                hoverColour: "#993333"
+                onNavigationButtonClicked: isCollapsed = !isCollapsed
             }
-        }
 
-        Button{
             NavigationButton{
                 iconCharacter:"\uf015"
-                description: "description"
-
+                description: "Dashboard"
+                onNavigationButtonClicked: masterController.ui_navigationController.goDashboardView()
             }
-            onClicked: masterController.ui_navigationController.goDashboardView()
-        }
 
-        Button{
             NavigationButton{
                 iconCharacter: "\uf004"
-                description: "description"
+                description: "New Client"
+                onNavigationButtonClicked: masterController.ui_navigationController.goFindClientView()
             }
-            onClicked: masterController.ui_navigationController.goFindClientView()
 
-        }
-
-        Button {
             NavigationButton {
                 iconCharacter: "\uf11a"
-                description: "Description"
+                description: "Find Client"
+                onNavigationButtonClicked: masterController.ui_navigationController.goCreateClientView()
             }
-            onClicked: masterController.ui_navigationController.goCreateClientView()
+
+
         }
     }
+
+
 }
 
 

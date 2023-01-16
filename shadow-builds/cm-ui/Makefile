@@ -64,6 +64,8 @@ DIST          = ../../cm/cm-ui/CreateClientView.qml \
 		../../cm/cm-ui/EditClientView.qml \
 		../../cm/cm-ui/FindClientView.qml \
 		../../cm/cm-ui/SplashView.qml \
+		../../cm/cm-ui/components/CommandBar.qml \
+		../../cm/cm-ui/components/CommandButton.qml \
 		/opt/Qt/5.15.2/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.15.2/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt/5.15.2/gcc_64/mkspecs/common/linux.conf \
@@ -688,6 +690,8 @@ qrc_components.cpp: ../../cm/cm-ui/components.qrc \
 		/opt/Qt/5.15.2/gcc_64/bin/rcc \
 		../../cm/cm-ui/components/NavigationButton.qml \
 		../../cm/cm-ui/components/NavigationBar.qml \
+		../../cm/cm-ui/components/CommandButton.qml \
+		../../cm/cm-ui/components/CommandBar.qml \
 		../../cm/cm-ui/components/qmldir
 	/opt/Qt/5.15.2/gcc_64/bin/rcc -name components ../../cm/cm-ui/components.qrc -o qrc_components.cpp
 
@@ -816,7 +820,10 @@ main.o: ../../cm/cm-ui/source/main.cpp /opt/Qt/5.15.2/gcc_64/include/QtGui/QGuiA
 		/opt/Qt/5.15.2/gcc_64/include/QtCore/QString \
 		../../cm/cm-lib/source/cm-lib_global.h \
 		../../cm/cm-lib/source/controllers/navigation-controller.h \
-		../../cm/cm-lib/source/models/client.h
+		../../cm/cm-lib/source/models/client.h \
+		../../cm/cm-lib/source/controllers/commandcontroller.h \
+		/opt/Qt/5.15.2/gcc_64/include/QtQml/QQmlListProperty \
+		../../cm/cm-lib/source/framework/command.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../cm/cm-ui/source/main.cpp
 
 qrc_views.o: qrc_views.cpp 

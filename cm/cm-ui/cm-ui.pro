@@ -41,4 +41,6 @@ DISTFILES += \
   DashboardView.qml \
   EditClientView.qml \
   FindClientView.qml \
-  SplashView.qml
+  SplashView.qml \
+  components/CommandBar.qml \
+  components/CommandButton.qml

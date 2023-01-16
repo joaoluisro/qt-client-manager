@@ -5,7 +5,6 @@ import assets 1.0
 Item{
 
     Rectangle{
-        color: "blue"
         anchors{
             fill: parent
 
